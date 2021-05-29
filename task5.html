@@ -1,0 +1,163 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="task5.css"></link>
+
+
+</head>
+<body>  
+
+
+	<div class="example-parent">
+		<div class="example-origin">
+		  <div
+			id="draggable1"
+			class="example-draggable"
+			draggable="true"
+			ondragstart="onDragStart(event);"
+		  >
+			Пример 1 (не 5 кнт)
+		  </div>
+		  <div
+		  id="draggable2"
+		  class="example-draggable"
+		  draggable="true"
+		  ondragstart="onDragStart(event);"
+		>
+		  Пример 2
+		</div>
+		<div
+		  id="draggable3"
+		  class="example-draggable"
+		  draggable="true"
+		  ondragstart="onDragStart(event);"
+		>
+		  Пример 3
+		</div>
+		<div
+		  id="draggable4"
+		  class="example-draggable"
+		  draggable="true"
+		  ondragstart="onDragStart(event);"
+		>
+		  Пример 4 (не 4 кт)
+		</div>
+		<div
+		  id="draggable7"
+		  class="example-draggable"
+		  draggable="true"
+		  ondragstart="onDragStart(event);"
+		>
+		  Пример 7
+		</div>
+		<div
+		  id="draggable5"
+		  class="example-draggable"
+		  draggable="true"
+		  ondragstart="onDragStart(event);"
+		>
+		  Пример 5
+		</div>
+		<div
+		  id="draggable6"
+		  class="example-draggable"
+		  draggable="true"
+		  ondragstart="onDragStart(event);"
+		>
+		  Пример 6 (не 5 кт)
+		</div>
+
+		</div>
+	  
+		<div
+		  class="example-dropzone"
+		  
+		  ondragover="onDragOver(event);"
+		  ondrop="onDrop(event);"
+		  id ="dropzon1"
+		>
+		  Контейнер 1
+		</div>
+		<div
+		class="example-dropzone"
+		ondragover="onDragOver(event);"
+		ondrop="onDrop(event, this);"
+		id ="dropzon2"
+	  >
+		Контейнер 2
+	  </div>
+	  <div
+	  class="example-dropzone"
+	  
+	  ondragover="onDragOver(event);"
+	  ondrop="onDrop(event, this);"
+	  id ="dropzon3"
+	>
+	  Контейнер 3
+	</div>
+	<div
+		class="example-dropzone"
+		ondragover="onDragOver(event);"
+		ondrop="onDrop(event, this);"
+		id ="dropzon4"
+	  >
+		Контейнер 4
+	  </div>
+	  <div
+	  class="example-dropzone"
+	  ondragover="onDragOver(event);"
+	  ondrop="onDrop(event, this);"
+	  id ="dropzon5"
+	>
+	  Контейнер 5
+	</div>
+
+	  </div>
+
+
+<script>
+function onDragStart(event) {
+  event
+    .dataTransfer
+	.setData('text/plain', event.target.id);
+	event
+    .currentTarget
+    .style
+    .backgroundColor = 'white';
+}
+   
+function onDragOver(event) {
+	
+  event.preventDefault();
+}
+
+function onDrop(event, target) {//проверка на разрешение переноса сделать!!!
+event.preventDefault();
+    var numDiv=event.target.id; 
+	//alert(event.target.id);
+ const id = event
+    .dataTransfer
+	.getData('text');
+	
+	if ((((id =="draggable6")||(id =="draggable1"))&&(numDiv=="dropzon5"))||((id =="draggable4")&&(numDiv=="dropzon4"))  )return null;
+	else {
+	const draggableElement = document.getElementById(id);
+	const dropzone = event.target;
+	dropzone.appendChild(draggableElement);
+	event
+    .dataTransfer
+    .clearData();}
+}
+
+
+
+
+</script>
+
+
+
+
+</body>
+<footer> </footer>
+
+
+</html>
